@@ -1,0 +1,275 @@
+{
+	"info": {
+		"_postman_id": "400337fb-9c5a-415c-986f-dc2e5880e8c1",
+		"name": "FWDAPIAutomation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21766329"
+	},
+	"item": [
+		{
+			"name": "GetAllAuthors",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"// Test Case 1: Make sure the response is \"200\".\r",
+							"pm.test(\"Status Code is 200\",function()\r",
+							"{\r",
+							"    console.log(\"Code should be 200\")\r",
+							"  pm.expect(pm.response.status).to.equal(\"OK\")\r",
+							"pm.expect(pm.response.code).to.equal(200)\r",
+							"}\r",
+							");\r",
+							"\r",
+							"pm.test(\"First name exists\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"firstName\");\r",
+							"});\r",
+							"pm.test(\"ID exists\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"});\r",
+							"pm.test(\"Book ID  exists\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"idBook\");\r",
+							"});\r",
+							"pm.test(\"Last name exists\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"lastName\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}api/v1/Authors",
+					"host": [
+						"{{URL}}api"
+					],
+					"path": [
+						"v1",
+						"Authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddAuther",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {\r",
+							"    console.log(response.json());\r",
+							"});\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"// pm.test(\"Status code is 200\", function () {\r",
+							"//     pm.response.to.have.status(200);\r",
+							"// });\r",
+							"// pm.test(\"Body matches string\", function () {\r",
+							"//     pm.expect(pm.response.text()).to.include(\"string_you_want_to_search\");\r",
+							"// });\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.firstName).to.includes(\"Suzan\");\r",
+							"});\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.firstName).to.includes(\"Suzan\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain; v=1.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json; v=1.0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 3,\r\n    \"idBook\": 1,\r\n    \"firstName\": \"{{firstName}}\",\r\n    \"lastName\": \"{{lastName}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}api/v1/Authors",
+					"host": [
+						"{{URL}}api"
+					],
+					"path": [
+						"v1",
+						"Authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAutherByBookId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {\r",
+							"    console.log(response.json());\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain; v=1.0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://fakerestapi.azurewebsites.net/api/v1/Authors/authors/books/4",
+					"protocol": "http",
+					"host": [
+						"fakerestapi",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"v1",
+						"Authors",
+						"authors",
+						"books",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAutherById",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain; v=1.0"
+					}
+				],
+				"url": {
+					"raw": "http://fakerestapi.azurewebsites.net/api/v1/Authors/5",
+					"protocol": "http",
+					"host": [
+						"fakerestapi",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"v1",
+						"Authors",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PutNewAuther",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain; v=1.0"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json; v=1.0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 100,\r\n    \"idBook\": 500,\r\n    \"firstName\": \"test100\",\r\n    \"lastName\": \"test500\"\r\n}"
+				},
+				"url": {
+					"raw": "http://fakerestapi.azurewebsites.net/api/v1/Authors/300",
+					"protocol": "http",
+					"host": [
+						"fakerestapi",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"v1",
+						"Authors",
+						"300"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAuther",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://fakerestapi.azurewebsites.net/api/v1/Authors/100",
+					"protocol": "http",
+					"host": [
+						"fakerestapi",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"v1",
+						"Authors",
+						"100"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

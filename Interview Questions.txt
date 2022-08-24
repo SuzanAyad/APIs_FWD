@@ -1,0 +1,38 @@
+* SQL:
+1- DML 
+2- Join types
+3- DB schema , join between 2 tables
+
+* ISTQB:
+- Stubs and drivers
+- Defect clustering vs pesticide paradox
+- Dynamic testing vs static testing
+- Stubs vs driver
+
+Agile:
+- Diff between agile testing & traditional testing
+- velocity rate
+- how to estimate your user stories using story point
+
+OOP:
+- OOP 4 principles
+- Diff between Encapsulation & Inheritance
+- Method overloading vs method overriding
+- abstract class vs static class
+
+Automation:
+- Diff between TESTNG and JUNIT
+- Web elements locators
+- xPath types
+- What is iFrame
+- wait types 
+- test base components
+- test report pluging
+- POM.xml components
+
+
+APIs:
+- Diff between GET & POST & PUT
+- Diff between Path parameters and Query Parameters
+- Request URL components
+- Response code types (500, 200, 400, 401, 201, 300)

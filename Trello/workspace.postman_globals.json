@@ -1,0 +1,57 @@
+{
+	"id": "b4585b52-1f33-4bb1-88cf-3d5871c59af7",
+	"values": [
+		{
+			"key": "key",
+			"value": "12bb36e464ac1440780262410cdd6fbc",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "5d79bb35514649088b96bae109e02a1e97843a58e6eb50cfbd313ead31dbbb79",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "FirstBoardID",
+			"value": "63069da7da8b1b0044305cd0",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "LastBoardID",
+			"value": "63069f6291e72b0052cdb269",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "list's name",
+			"value": "suzan",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "FirstListID",
+			"value": "63069e1226084100626109f1",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "LastListID",
+			"value": "63069da7da8b1b0044305cd9",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "board'sID",
+			"value": "6306a25be3d17300a332dc09",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2022-08-24T22:27:11.110Z",
+	"_postman_exported_using": "Postman/9.29.5"
+}

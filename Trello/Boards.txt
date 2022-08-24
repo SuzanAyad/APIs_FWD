@@ -1,0 +1,16 @@
+boards": [
+        {
+            "id": "63069da7da8b1b0044305cd0",
+            "name": "trello testing",
+            "closed": false,
+            "idOrganization": "6303f651c4c989889f57dea2",
+            "pinned": false
+        },
+        {
+            "id": "63069f6291e72b0052cdb269",
+            "name": "trello testing",
+            "closed": false,
+            "idOrganization": "6303f651c4c989889f57dea2",
+            "pinned": false
+        }
+    ]
