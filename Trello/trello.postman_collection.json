@@ -143,6 +143,23 @@
 							"pm.globals.set(\"LastListID\",pm.response.json()[pm.response.json().length-1].id);\r",
 							"console.log(pm.globals.get(\"FirstListID\"));\r",
 							"console.log(pm.globals.get(\"LastListID\"));\r",
+							"\r",
+							"pm.test(\"3 list in the board\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(3);\r",
+							"});\r",
+							"pm.test(\"Check existing\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].name).to.equals(\"To Do\");\r",
+							"});\r",
+							"pm.test(\"Doing existing check\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[1].name).to.equals(\"Doing\");\r",
+							"});\r",
+							"pm.test(\"DONE existing check\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[2].name).to.equals(\"Done\");\r",
+							"});\r",
 							""
 						],
 						"type": "text/javascript"
@@ -290,15 +307,53 @@
 		},
 		{
 			"name": "ArchiveOrun-archiveAList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Your list is archieved\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.closed).to.be.true;\r",
+							"});\r",
+							"pm.test(\"Your list is not archieved\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.closed).to.be.false;\r",
+							"});\r",
+							"pm.test(\"check for set cookies header\", function () {\r",
+							"    var jsonData = pm.response.headers;\r",
+							"    pm.expect(jsonData.get(\"Set-Cookie\")).to.includes(\"isEnterpriseAdmin%3Dfalse\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "{{URL}}1/lists/:id/closed?key={{key}}&token={{token}}",
+					"raw": "https://api.trello.com/1/lists/:id/closed?key={{key}}&token={{token}}",
+					"protocol": "https",
 					"host": [
-						"{{URL}}1"
+						"api",
+						"trello",
+						"com"
 					],
 					"path": [
+						"1",
 						"lists",
 						":id",
 						"closed"

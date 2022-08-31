@@ -1,5 +1,72 @@
- API: GET /api/v1/Authors
- Test Case: response should be 200 OK
- Expected Result: 200 OK
- Actual Result: 200 OK
- Status: Pass
+Test Case 1: GET Response is 200 "OK".
+	API: GET /api/v1/Authors.
+	Case: Response should be 200 "OK".
+	Expected Result: 200 "OK".
+	Actual Result: 200 "OK".
+	Status: Pass.
+	
+Test Case 2: Returned Objects contain: id, idBook, firstName, lastName.
+	API: GET /api/v1/Authors.
+	Case: Returned Objects should contain: id, idBook, firstName, lastName.
+	Expected Result: Each Object contains: id, idBook, firstName, lastName.
+	Actual Result: Each Object contains: id, idBook, firstName, lastName.
+	Status: Pass.
+	
+Test Case 3: POST Response code should be 201 "Created".
+	API: POST /api/v1/Authors
+	Case: Sending {"id":100, "idBook": 100, "firstName": "Adam", "lastName": "Adam"}
+		should return success Response.
+	Expected Result: Response code 201.
+	Actual Result: 200 "OK".
+	Status: fail.
+	
+Test Case 4: POST Response code should be 400 if firstName or/and lastName was missing.
+	API: POST /api/v1/Authors
+	Case: Sending only {"id": "100", "idBook": "100", "lastName": "Adam"}
+		should return success Response.
+	Expected Result: Response code 400.
+	Actual Result: 200 "OK".
+	Status: fail.
+	
+Test Case 5: Response body returns an array of books with idBook if it is exist.
+	API: GET /api/v1/Authors/authors/books/{idBook}
+	Case: Sending an existed {idBook} in this API should return the requested Books array, for this Test we try {idBook}: 10.
+	Expected Result: Response body should return an array with idBook of 10.
+	Actual Result:Response body returned an array with idBook of 10.
+	Status: Pass.
+
+Test Case 6: Response body returns an empty array if idBook does not exist
+	API: GET /api/v1/Authors/authors/books/{idBook}.
+	Case: Sending {idBook} does not exist in this API should return the requested Book, for this Test we try {idBook}: 1000.
+	Expected Result: Response body should returns an empty array.
+	Actual Result: Response body returns an empty array [].
+	Status: Pass.
+
+Test Case 7: Response body returns the book with id if it is exist.
+	API: GET /api/v1/Authors/{id}
+	Case: Sending an existed {id} in this API should return the requested Book, for this Test we try {id}: 200.
+	Expected Result: Response body should return an array with idBook of 10.
+	Actual Result:
+	
+	Status: Pass.
+
+Test Case 8: Response should be 404 "Error: Not Found" with id if it is exist.
+	API: GET /api/v1/Authors/{id}.
+	Case: Sending {id} does not exist in this API should return the requested Book, for this Test we try {id}: 1000.
+	Expected Result: Response should be 404 "Error: Not Found"
+	Actual Result: Response is 404 "Error: Not Found"
+	Status: Pass.
+	
+Test Case 9: Author's data is updated successfully
+	API: PUT /api/v1/Authors/{id}.
+	Case: Sending a PUT request with id = 10 the following body {"id": 10, "idBook": 10, "firstName": "Adam", "lastName": "Adam"} should update the author.
+	Expected Result: response should be 200 "OK" & response should returns the entry.
+	Actual Result: response is 200 "OK" & response returned the entry.
+	Status: Pass.
+
+Test Case 10: The author's data is changed in GET request
+	API: GET /api/v1/Authors/{id}
+	Case: Sending a Get request after PUT with the same {id} should return updated values.
+	Expected Result: response should be 200 "OK" & response should returns the entry.
+	Actual Result: response is 200 "OK" But the response returned (non updated) value different from the entry.
+	Status: Fail.
